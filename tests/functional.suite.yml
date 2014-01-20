@@ -1,0 +1,19 @@
+class_name: TestGuy
+modules:
+    enabled: [REST, Db, ZF1, TestHelper, DbzHelper, GuzzleHelper]
+
+    config:
+        REST:
+            timeout: 90
+        Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=vreasy_task_confirmation_test'
+            user: 'vreasy'
+            password: ';FeA336101-vreasy_task_confirmation'
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: false
+        ZF1:
+            env: 'test'
+            app_path: 'vreasy/application'
+            lib_path: 'library'
+            config: 'vreasy/application/configs/application.ini'

@@ -1,0 +1,12 @@
+class_name: CodeGuy
+modules:
+    enabled: [Db, CodeHelper, DbzHelper]
+
+    config:
+        Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=vreasy_task_confirmation_test'
+            user: 'vreasy'
+            password: ';FeA336101-vreasy_task_confirmation'
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: false

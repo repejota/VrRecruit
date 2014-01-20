@@ -1,0 +1,83 @@
+<?php
+
+if($this->debug) {
+?>
+  <h1>An error occurred</h1>
+  <h2><?php echo $this->message ?></h2>
+
+  <?php if (isset($this->exception)): ?>
+
+  <h3>Exception information:</h3>
+  <p>
+      <b>Type:</b> <?php echo get_class($this->exception); ?>
+  </p>
+  <p>
+      <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+  </p>
+
+  <h3>Stack trace:</h3>
+  <pre><?php echo $this->exception->getTraceAsString() ?>
+  </pre>
+
+  <h3>Request Parameters:</h3>
+  <pre><?php echo $this->escape(var_export($this->requestParams, true)) ?>
+  </pre>
+
+  <?php endif ?>
+
+<?php
+} else {
+ ?>
+
+
+<?php
+function curPageURL() {
+  $pageURL = 'http';
+  if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
+    $pageURL .= "s";
+  }
+  $pageURL .= '://';
+  if (isset($_SERVER["SERVER_PORT"]) && $_SERVER["SERVER_PORT"] != "80") {
+    $pageURL .= "{$_SERVER["SERVER_NAME"]}:{$_SERVER["SERVER_PORT"]}{$_SERVER["REQUEST_URI"]}";
+  }
+  else {
+    $pageURL .= "{$_SERVER["SERVER_NAME"]}{$_SERVER["REQUEST_URI"]}";
+  }
+  return $pageURL;
+}
+?>
+
+<?php if ($this->exception->getCode() == 401 || $this->code == 401) { ?>
+<div class="ac">
+  <h2>
+    <?= $this->translate('You are not authorized to access this resource') ?>
+  </h2>
+  <p class="lead">
+    <?= sprintf($this->translate(
+        "the link you_ve clicked on is no longer available to you"),
+        SYSTEM_REPLYTO
+    ) ?>
+  </p>
+</div>
+<?php } else { ?>
+<div class="ac">
+  <h3>
+    <?= $this->translate( 'UH-OH! Something went wrong.' ) ?>
+  </h3>
+  <p>
+    <?= $this->translate('Check the URL') ?>
+    <a href="<?php echo curPageURL(); ?>">
+      <?php echo curPageURL(); ?>
+    </a>
+    <?= $this->translate('or') ?>
+    <a href="/calendar" class="clearfix">
+      <?= $this->translate('go back') ?>
+    </a>
+  </p>
+
+  <img alt="" src="/img/404.jpg" class="clearfix">
+</div>
+<?php } ?>
+
+
+<?php } ?>

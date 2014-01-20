@@ -1,0 +1,26 @@
+vreasy/public/media/
+
+/.project
+/.bundle
+
+vendor
+*.logs
+*.log
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*.orig
+*.DS_*
+tests/_log/*
+/.settings/org.eclipse.core.resources.prefs
+node_modules/
+vreasy/public/bower_components/*
+tests/_log/*
+# php profiler that usually is in the public folder
+*webgrind*
+bin/
+
+# Do not ignore the gitkeeps
+!*.gitkeep
+.elasticbeanstalk/

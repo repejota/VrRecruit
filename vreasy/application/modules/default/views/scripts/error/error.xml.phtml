@@ -1,0 +1,33 @@
+<?php
+$out =new XMLWriter();
+$out->openURI('php://output');
+$out->startDocument('1.0', 'UTF-8');
+$out->startElement('error');
+
+if($this->debug) {
+  $out->writeElement('message', $this->message);
+  $out->writeElement('params', $this->escape(var_export($this->requestParams, true)));
+  if (isset($this->exception)) {
+    $out->startElement('exception');
+    $out->writeElement('type', get_class($this->exception));
+    $out->writeElement('message', $this->exception->getMessage());
+    $out->writeElement('stackTrace', $this->exception->getTraceAsString());
+    $out->endElement();
+  }
+} else {
+  if ($this->exception->getCode() == 401 || $this->code == 401) {
+    $out->writeElement(
+      'message',
+      $this->translate('You are not authorized to access this resource')
+    );
+  } else {
+    $out->writeElement(
+      'message',
+      $out->writeElement('message', $this->message)
+    );
+  }
+}
+
+$out->endElement();
+$out->endDocument();
+$out->flush();

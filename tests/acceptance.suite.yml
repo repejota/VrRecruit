@@ -1,0 +1,15 @@
+class_name: AcceptanceGuy
+modules:
+    enabled: [AcceptanceHelper, Selenium2, Db]
+    config:
+        Selenium2:
+            url: 'http://test.vreasy.com:8000'
+            browser: 'phantomjs'
+            port: 4444
+        Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=vreasy_task_confirmation_test'
+            user: 'vreasy'
+            password: ';FeA336101-vreasy_task_confirmation'
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: true
