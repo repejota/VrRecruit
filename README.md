@@ -53,9 +53,13 @@ Getting started
     php vendor/codeception/codeception/codecept run --debug
     ```
     It should output something like ```OK (2 tests, 4 assertions)```
+
 Help
 ----
+
 Do you have any questions? Ask Mauro (<mailto:mauro@vreasy.com>)
+
 Conventions
 -----------
+
 We follow [PSR-1](http://www.php-fig.org/psr/1/) and [PSR-2](http://www.php-fig.org/psr/2) from [PHP-FIG](http://www.php-fig.org/) and we do follow [Rest-full principles](http://en.wikipedia.org/wiki/Representational_state_transfer#Central_principle)
