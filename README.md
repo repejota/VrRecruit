@@ -37,7 +37,7 @@ Getting started
 5. Run [ruckusing](https://github.com/ruckus/ruckusing-migrations) migrations
 
     ```
-    php vendor/ruckusing/ruckusing-migrations/ruckus.php db:migrate
+    php vendor/ruckusing/ruckusing-migrations/ruckus.php db:migrate ENV=development
     php vendor/ruckusing/ruckusing-migrations/ruckus.php db:migrate ENV=test
     ```
 6. Install npm and client side dependencies
@@ -53,6 +53,21 @@ Getting started
     php vendor/codeception/codeception/codecept run --debug
     ```
     It should output something like ```OK (2 tests, 4 assertions)```
+
+8. Add a VirtualHost
+    ```
+    <VirtualHost *:80>
+             DocumentRoot "/projects/vrRecruit/vreasy/public"
+             SetEnv APPLICATION_ENV "development"
+             ServerName vreasydev.com
+       <Directory "/projects/vrRecruit/vreasy/public">
+             Options Indexes FollowSymLinks MultiViews
+             AllowOverride all
+             Order allow,deny
+             Allow from all
+        </Directory>
+     </VirtualHost>
+    ```
 
 Help
 ----
