@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "69f55dcc5322927bba5fe500452ddd7b",
+    "hash": "c24f4866e62226fb92b312a5a321c1d3",
     "packages": [
         {
             "name": "eluceo/ical",
@@ -155,13 +156,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/VictorBjelkholm/OAuth.git",
-                "reference": "931bbd357673746274e1b39ad58a73f0788774a5"
+                "url": "https://github.com/Vreasy/OAuth.git",
+                "reference": "1249c0098776cfa688c7925740c617ceed693105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VictorBjelkholm/OAuth/zipball/931bbd357673746274e1b39ad58a73f0788774a5",
-                "reference": "931bbd357673746274e1b39ad58a73f0788774a5",
+                "url": "https://api.github.com/repos/Vreasy/OAuth/zipball/1249c0098776cfa688c7925740c617ceed693105",
+                "reference": "1249c0098776cfa688c7925740c617ceed693105",
                 "shasum": ""
             },
             "require": {
@@ -207,9 +208,9 @@
                 "oauth"
             ],
             "support": {
-                "source": "https://github.com/VictorBjelkholm/OAuth/tree/master"
+                "source": "https://github.com/Vreasy/OAuth/tree/load-balancer-forwarded-headers"
             },
-            "time": "2013-09-25 15:31:17"
+            "time": "2014-10-15 18:34:46"
         },
         {
             "name": "joshuaestes/feature-toggle",
@@ -265,32 +266,6 @@
                 "toggle"
             ],
             "time": "2013-11-08 16:16:07"
-        },
-        {
-            "name": "leth/ip-address",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leth/PHP-IPAddress.git",
-                "reference": "0c3bb3847e55727258c291bc90f5ab716288b7da"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leth/PHP-IPAddress/zipball/0c3bb3847e55727258c291bc90f5ab716288b7da",
-                "reference": "0c3bb3847e55727258c291bc90f5ab716288b7da",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Leth\\IPAddress": "classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "time": "2013-10-02 09:13:53"
         },
         {
             "name": "phpactiveresource/phpactiveresource",
@@ -2063,25 +2038,19 @@
             "time": "2013-11-26 16:40:27"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "ruckusing/ruckusing-migrations": 20,
         "vlucas/valitron": 20,
         "yohang/finite": 20,
-        "leth/ip-address": 20,
         "eluceo/ical": 20,
         "jacobkiers/oauth": 20,
         "joshuaestes/feature-toggle": 20,
         "codeception/codeception": 20,
         "magento/community-edition": 20
     },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
 }

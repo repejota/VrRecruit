@@ -17,7 +17,7 @@ class ErrorController extends Zend_Controller_Action
 
     public function errorAction() {
         $errors = $this->_getParam('error_handler');
-        if( APPLICATION_ENV!='development' && APPLICATION_ENV!='testing'  && APPLICATION_ENV!='test' ){
+        if( APPLICATION_ENV!='development' && APPLICATION_ENV!='testing'  && APPLICATION_ENV!='test'){
             $this->view->debug = false;
         }
         else {

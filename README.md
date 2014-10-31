@@ -33,8 +33,10 @@ Getting started
     4. DB User: ```vreasy```
     4. DB Password: ```;FeA336101-vreasy_task_confirmation```
     4. Development db ```vreasy_task_confirmation```
+    4. DB User: ```ubuntu```
+    4. DB Password: `````` which means an empty or no password
     4. Test db ```vreasy_task_confirmation_test```
-5. Run [ruckusing](https://github.com/ruckus/ruckusing-migrations) migrations
+5. Run [ruckusing](https://github.com/ruckus/ruckusing-migrations) migrations to setup the db structure
 
     ```
     php vendor/ruckusing/ruckusing-migrations/ruckus.php db:migrate ENV=development
@@ -54,6 +56,8 @@ Getting started
     ```
     It should output something like ```OK (2 tests, 4 assertions)```
 
+    [![Circle CI](https://circleci.com/gh/Vreasy/VrRecruit.png?style=badge)](https://circleci.com/gh/Vreasy/VrRecruit)
+
 8. Add a VirtualHost
     ```
     <VirtualHost *:80>
@@ -68,6 +72,7 @@ Getting started
         </Directory>
      </VirtualHost>
     ```
+9. Your Pull Request should trigger an automatic build in [circleci](https://www.circleci.com). You might have to create an account there too, to trigger these builds on your fork of the project.
 
 Help
 ----

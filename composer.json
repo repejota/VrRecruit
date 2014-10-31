@@ -16,7 +16,7 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:VictorBjelkholm/OAuth.git"
+            "url": "git@github.com:Vreasy/OAuth.git"
         },
         {
             "type": "vcs",
@@ -32,14 +32,13 @@
         "ruckusing/ruckusing-migrations": "dev-master#6c7a26ccd96a4ac980f3fc47c6645458ed918406",
         "vlucas/valitron": "dev-master#8c34a03",
         "yohang/finite": "1.0.*@dev",
-        "leth/ip-address": "dev-master",
         "phpactiveresource/phpactiveresource": "*",
         "guzzle/guzzle": "3.7.x",
         "robclancy/presenter": "1.0.x",
         "sabre/vobject" : "~3.0.0",
         "eluceo/ical": "dev-master#9b56d5b44c068f3c8fbd7937a412909b723018a3",
         "robclancy/presenter": "1.0.x",
-        "jacobkiers/oauth": "dev-master#931bbd357673746274e1b39ad58a73f0788774a5",
+        "jacobkiers/oauth": "dev-master#1249c0098776cfa688c7925740c617ceed693105",
         "joshuaestes/feature-toggle": "dev-master#c5bfb654e2e9496a363628079de5a067be62c5e6"
     },
     "require-dev": {
