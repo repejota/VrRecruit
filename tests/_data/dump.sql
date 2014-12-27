@@ -36,7 +36,10 @@ LOCK TABLES `schema_migrations` WRITE;
 INSERT INTO `schema_migrations` (`version`)
 VALUES
 	('20140119094657'),
-	('20140120120350');
+	('20140120120350'),
+  ('20140120145548'),
+  ('20141224094657'),
+  ('20141224145548');
 
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -49,6 +52,7 @@ DROP TABLE IF EXISTS `tasks`;
 
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` enum('pending','accepted','refused','completed') NOT NULL DEFAULT 'pending',
   `deadline` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -57,7 +61,17 @@ CREATE TABLE `tasks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `messages`;
 
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `task` int(11) NOT NULL,
+  `status` enum('pending','accepted','refused','completed') NOT NULL DEFAULT 'pending',
+  `created_at` datetime DEFAULT NULL,
+  `from` text,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

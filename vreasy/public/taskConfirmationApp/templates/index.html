@@ -1,31 +1,39 @@
 <h1>
-<ng-pluralize count="tasks.length"
-                 when="{'0': 'Sorry, there are no tasks',
-                     'one': 'Listing 1 Task.',
-                     'other': 'Listing {} Tasks'}">
-</ng-pluralize>
+    <ng-pluralize count="tasks.length"
+                  when="{'0': 'Sorry, there are no tasks', 'one': 'Listing 1 Task.', 'other': 'Listing {} Tasks'}"></ng-pluralize>
 </h1>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Deadline</th>
-    <th>Assignee</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<hr/>
 
-  <tr ng-repeat="task in tasks">
-    <td>{{task.id}}</td>
-    <td>{{task.deadline}}</td>
-    <td>{{task.assigned_name}}</td>
-    <td>{{task.assigned_phone}}</td>
-    <td>
-      <a href="" class="btn" disabled>
-        Show
-      </a>
-    </td>
-  </tr>
+<table class="table tasks">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Deadline</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th>Assignee</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="task-{{task.id}}"
+        class="task"
+        ng-repeat="task in tasks"
+        ng-class="{success:task.status=='completed', danger:task.status=='refused', info:task.status=='accepted'}">
+        <td class="id">{{task.id | number}}</td>
+        <td class="deadline">{{task.deadline | date}}</td>
+        <td class="deadline">{{task.created_at | date}}</td>
+        <td class="deadline">{{task.updated_at | date}}</td>
+        <td class="assigned_name">{{task.assigned_name}}</td>
+        <td class="assigned_phone">{{task.assigned_phone}}</td>
+        <td class="status">{{task.status}}</td>
+        <td class="actions text-right">
+            <a href="/#/task/{{task.id}}" class="btn btn-sm btn-default" role="button"><i class="fa fa-eye fa-fw"></i>
+                Show</a>
+        </td>
+    </tr>
+    </tbody>
 </table>

@@ -1,11 +1,20 @@
 <?php
-
 namespace Vreasy\Models;
 
 use Vreasy\Query\Builder;
 
+/**
+ * Class Task
+ * @package Vreasy\Models
+ */
 class Task extends Base
 {
+    // Different status codes for a task
+    const STATUS_PENDING = "pending";
+    const STATUS_ACCEPTED = "accepted";
+    const STATUS_REFUSED = "refused";
+    const STATUS_COMPLETED = "completed";
+
     // Protected attributes should match table columns
     protected $id;
     protected $deadline;
@@ -13,13 +22,22 @@ class Task extends Base
     protected $assigned_phone;
     protected $created_at;
     protected $updated_at;
+    protected $status;
 
+    /**
+     * Task constructor
+     */
     public function __construct()
     {
+        // Default field values
+        $this->status = Task::STATUS_PENDING;
+        $this->created_at = gmdate(DATE_FORMAT);
+        $this->updated_at = $this->created_at;
+
         // Validation is done run by Valitron library
         $this->validates(
             'required',
-            ['deadline', 'assigned_name', 'assigned_phone']
+            ['status', 'deadline', 'assigned_name', 'assigned_phone']
         );
         $this->validates(
             'date',
@@ -31,6 +49,10 @@ class Task extends Base
         );
     }
 
+    /**
+     * Save a task to database
+     * @return mixed
+     */
     public function save()
     {
         // Base class forward all static:: method calls directly to Zend_Db
@@ -41,16 +63,17 @@ class Task extends Base
                 static::insert('tasks', $this->attributesForDb());
                 $this->id = static::lastInsertId();
             } else {
-                static::update(
-                    'tasks',
-                    $this->attributesForDb(),
-                    ['id = ?' => $this->id]
-                );
+                static::update('tasks', $this->attributesForDb(), ['id = ?' => $this->id]);
             }
             return $this->id;
         }
     }
 
+    /**
+     * Get a task by its Id
+     * @param $id
+     * @return mixed|Task
+     */
     public static function findOrInit($id)
     {
         $task = new Task();
@@ -61,6 +84,12 @@ class Task extends Base
     }
 
 
+    /**
+     * Search tasks in the database
+     * @param $params
+     * @param array $opts
+     * @return array
+     */
     public static function where($params, $opts = [])
     {
         // Default options' values
@@ -109,5 +138,53 @@ class Task extends Base
             }
         }
         return $collection;
+    }
+
+    /**
+     * Accepts the task and updates update_at
+     * @return $this
+     */
+    public function accept($from)
+    {
+        // Change update_at timestamp field
+        $this->updated_at = gmdate(DATE_FORMAT);
+        $this->assigned_phone = $from;
+
+        // Change the status field
+        $this->status = Task::STATUS_ACCEPTED;
+
+        return $this;
+    }
+
+    /**
+     * Refuses the task and updates update_at
+     * @return $this
+     */
+    public function refuse($from)
+    {
+        // Change update_at timestamp field
+        $this->updated_at = gmdate(DATE_FORMAT);
+        $this->assigned_phone = $from;
+
+        // Change the status field
+        $this->status = Task::STATUS_REFUSED;
+
+        return $this;
+    }
+
+    /**
+     * Completes the task and updates update_at
+     * @return $this
+     */
+    public function complete($from)
+    {
+        // Change update_at timestamp field
+        $this->updated_at = gmdate(DATE_FORMAT);
+        $this->assigned_phone = $from;
+
+        // Change the status field
+        $this->status = Task::STATUS_COMPLETED;
+
+        return $this;
     }
 }

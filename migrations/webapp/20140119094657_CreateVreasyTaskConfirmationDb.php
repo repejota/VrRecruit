@@ -9,7 +9,7 @@ class CreateVreasyTaskConfirmationDb extends Ruckusing_Migration_Base
         } elseif (getenv('APPLICATION_ENV') == 'test') {
             $this->create_database("vreasy_task_confirmation_test");
         }
-    }//up()
+    }
 
     public function down()
     {
@@ -18,5 +18,5 @@ class CreateVreasyTaskConfirmationDb extends Ruckusing_Migration_Base
         } elseif (getenv('APPLICATION_ENV') == 'test') {
             $this->drop_database("vreasy_task_confirmation_test");
         }
-    }//down()
+    }
 }

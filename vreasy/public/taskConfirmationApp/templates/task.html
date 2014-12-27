@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-xs-9">
+        <h1>View Task {{task.id}}</h1>
+    </div>
+    <div class="col-xs-3 text-right">
+        <a href="/" class="btn btn-sm btn-default back" role="button"><i class="fa fa-arrow-left fa-fw"></i> Back to
+            list</a>
+    </div>
+</div>
+
+<hr/>
+
+<table class="table tasks">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Deadline</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th>Assignee</th>
+        <th>Phone</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="task-{{task.id}}"
+        class="task"
+        ng-class="{success:task.status=='completed', danger:task.status=='refused', info:task.status=='accepted'}">
+        <td class="id">{{task.id | number}}</td>
+        <td class="deadline">{{task.deadline | date}}</td>
+        <td class="deadline">{{task.created_at | date}}</td>
+        <td class="deadline">{{task.updated_at | date}}</td>
+        <td class="assigned_name">{{task.assigned_name}}</td>
+        <td class="assigned_phone">{{task.assigned_phone}}</td>
+        <td class="status">{{task.status}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<hr/>
+
+<h4>
+    Task {{task.id}} Messages
+</h4>
+
+<hr/>
+
+<table class="table messages">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Created at</th>
+        <th>From</th>
+        <th>Message</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id="message-{{message.id}}"
+        class="message"
+        ng-repeat="message in messages"
+        ng-class="{success:message.status=='completed', danger:message.status=='refused', info:message.status=='accepted'}">
+        <td class="id">{{message.id | number}}</td>
+        <td class="created_at">{{message.created_at | date}}</td>
+        <td class="from">{{message.from}}</td>
+        <td class="message">{{message.message}}</td>
+        <td class="status">{{message.status}}</td>
+    </tr>
+    </tbody>
+</table>
